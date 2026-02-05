@@ -4,7 +4,7 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
 import nltk
-from ntscraper import Nitter
+
 
 # Download stopwords once, using Streamlit's caching
 @st.cache_resource
@@ -38,8 +38,7 @@ def predict_sentiment(text, model, vectorizer, stop_words):
 
 # Initialize Nitter scraper
 @st.cache_resource
-def initialize_scraper():
-    return Nitter(log_level=1)
+
 
 # Function to create a colored card
 def create_card(tweet_text, sentiment):
@@ -59,7 +58,7 @@ def main():
     # Load stopwords, model, vectorizer, and scraper only once
     stop_words = load_stopwords()
     model, vectorizer = load_model_and_vectorizer()
-    scraper = initialize_scraper()
+  
 
     # User input: either text input or Twitter username
     option = st.selectbox("Choose an option", ["Input text", ])
